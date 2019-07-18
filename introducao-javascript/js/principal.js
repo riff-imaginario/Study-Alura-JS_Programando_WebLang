@@ -37,6 +37,12 @@ for (var i=0; i < pacientes.length; i++) {
 
 var botaoAdicionar = document.querySelector('#adicionar-paciente')
 botaoAdicionar.addEventListener('click', function() {
-    event.preventDefault()
-    console.log('hi')
+    event.preventDefault()  // Previne que página seja recarregada quando o botão for clicado
+    
+    var form = document.querySelector('#form-adiciona')
+
+    var nome    = form.nome.value
+    var peso    = form.peso.value
+    var altura  = form.altura.value
+    var gordura = form.gordura.value
 })
