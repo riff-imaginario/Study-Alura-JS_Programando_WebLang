@@ -36,19 +36,12 @@ function montaTr(paciente) {
     var pacienteTr = document.createElement('tr')  // Cria tag table row
     pacienteTr.classList.add('paciente')  // Cria .paciente na tr
 
-    // Cria tag table data para cada atributo da tabela 
-    var nomeTd    = document.createElement('td')
-    var pesoTd    = document.createElement('td')
-    var alturaTd  = document.createElement('td')
-    var gorduraTd = document.createElement('td')
-    var imcTd     = document.createElement('td')
-
-    // Preenche campos que serão usados na tabela
-    nomeTd.textContent    = paciente.nome
-    pesoTd.textContent    = paciente.peso
-    alturaTd.textContent  = paciente.altura
-    gorduraTd.textContent = paciente.gordura
-    imcTd.textContent     = paciente.imc
+    // Monta tags td que serão utilizadas
+    var nomeTd    = montaTd(paciente.nome, 'info-nome')
+    var pesoTd    = montaTd(paciente.peso, 'info-peso')
+    var alturaTd  = montaTd(paciente.altura, 'info-altura')
+    var gorduraTd = montaTd(paciente.gordura, 'info-gordura')
+    var imcTd     = montaTd(paciente.imc, 'info-imc')
 
     // Adiciona campos a table row da tabela
     pacienteTr.appendChild(nomeTd)
