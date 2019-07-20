@@ -6,7 +6,35 @@ botaoAdicionar.addEventListener('click', function() {
     
     var form       = document.querySelector('#form-adiciona')  // Seleciona form para pegar dados
     var paciente   = obtemPacienteDoFormulario(form)  // Atribui a paciente, o retorno da função
+
+    pacienteTr = montaTr(paciente)
+    
+    var tabela = document.querySelector('#tabela-pacientes') // Seleciona tabela de pacientes
+
+    tabela.appendChild(pacienteTr)  // adiciona paciente à tabela
+})
+
+
+// Função para obter dados do paciente
+function obtemPacienteDoFormulario(form) {
+
+    // Cria objeto paciente com valores dos 'names' de cada 'input' no form 
+    var paciente = {
+        nome    : form.nome.value,
+        peso    : form.peso.value,
+        altura  : form.altura.value,
+        gordura : form.gordura.value,
+        imc     : calculaIMC(form.peso.value, form.altura.value)  // Reaproveitamento da função feita em calcula-imc.js
+    }
+
+    return paciente
+}
+
+
+// Monta linha da tabela com novo paciente
+function montaTr(paciente) {
     var pacienteTr = document.createElement('tr')  // Cria tag table row
+    pacienteTr.classList.add('paciente')  // Cria .paciente na tr
 
     // Cria tag table data para cada atributo da tabela 
     var nomeTd    = document.createElement('td')
@@ -29,23 +57,15 @@ botaoAdicionar.addEventListener('click', function() {
     pacienteTr.appendChild(gorduraTd)
     pacienteTr.appendChild(imcTd)
 
-    var tabela = document.querySelector('#tabela-pacientes') // Seleciona tabela de pacientes
-
-    tabela.appendChild(pacienteTr)  // adiciona paciente à tabela
-})
+    return pacienteTr
+}
 
 
-// Função para obter dados do paciente
-function obtemPacienteDoFormulario(form) {
+// Cria tag td com dados que a tag irá guardar e uma classe
+function montaTd(dado, classe) {
+    var td = document.createElement('td')
+    td.textContent = dado
+    td.classList.add(classe)
 
-    // Cria objeto paciente com valores dos 'names' de cada 'input' no form 
-    var paciente = {
-        nome    : form.nome.value,
-        peso    : form.peso.value,
-        altura  : form.altura.value,
-        gordura : form.gordura.value,
-        imc     : calculaIMC(form.peso.value, form.altura.value)  // Reaproveitamento da função feita em calcula-imc.js
-    }
-
-    return paciente
+    return td
 }
