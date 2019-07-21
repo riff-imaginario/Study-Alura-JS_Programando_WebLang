@@ -36,19 +36,12 @@ function montaTr(paciente) {
     var pacienteTr = document.createElement('tr')  // Cria tag table row
     pacienteTr.classList.add('paciente')  // Cria .paciente na tr
 
-    // Monta tags td que serão utilizadas
-    var nomeTd    = montaTd(paciente.nome, 'info-nome')
-    var pesoTd    = montaTd(paciente.peso, 'info-peso')
-    var alturaTd  = montaTd(paciente.altura, 'info-altura')
-    var gorduraTd = montaTd(paciente.gordura, 'info-gordura')
-    var imcTd     = montaTd(paciente.imc, 'info-imc')
-
-    // Adiciona campos a table row da tabela
-    pacienteTr.appendChild(nomeTd)
-    pacienteTr.appendChild(pesoTd)
-    pacienteTr.appendChild(alturaTd)
-    pacienteTr.appendChild(gorduraTd)
-    pacienteTr.appendChild(imcTd)
+    // Adiciona campos (tags td) na table row da tabela
+    pacienteTr.appendChild(montaTd(paciente.nome, 'info-nome'))
+    pacienteTr.appendChild(montaTd(paciente.peso, 'info-peso'))
+    pacienteTr.appendChild(montaTd(paciente.altura, 'info-altura'))
+    pacienteTr.appendChild(montaTd(paciente.gordura, 'info-gordura'))
+    pacienteTr.appendChild(montaTd(paciente.imc, 'info-imc'))
 
     return pacienteTr
 }
