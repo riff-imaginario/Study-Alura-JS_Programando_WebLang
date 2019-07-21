@@ -12,6 +12,8 @@ botaoAdicionar.addEventListener('click', function() {
     var tabela = document.querySelector('#tabela-pacientes') // Seleciona tabela de pacientes
 
     tabela.appendChild(pacienteTr)  // adiciona paciente à tabela
+
+    form.reset()  // Reseta campos do input form
 })
 
 
