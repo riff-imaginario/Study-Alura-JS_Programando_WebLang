@@ -7,7 +7,13 @@ botaoAdicionar.addEventListener('click', function() {
     var form       = document.querySelector('#form-adiciona')  // Seleciona form para pegar dados
     var paciente   = obtemPacienteDoFormulario(form)  // Atribui a paciente, o retorno da função
 
-    pacienteTr = montaTr(paciente)
+    var pacienteTr = montaTr(paciente)
+
+    // Verifica se paciente é valido
+    if(!validaPaciente(paciente)) {
+        console.log("Paciente inválido!")
+        return  // Sai da função sem executar código abaixo
+    }
     
     var tabela = document.querySelector('#tabela-pacientes') // Seleciona tabela de pacientes
 
@@ -56,4 +62,9 @@ function montaTd(dado, classe) {
     td.classList.add(classe)
 
     return td
+}
+
+
+function validaPaciente(paciente) {
+    return validaPeso(paciente.peso) && validaAltura(paciente.altura)
 }
